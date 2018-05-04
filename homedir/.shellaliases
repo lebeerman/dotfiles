@@ -3,7 +3,7 @@
 #################################
 # Simple Program Name Shortening
 alias g=git
-
+alias echow='echo "Hello World!"'
 #############################
 # Utilities
 

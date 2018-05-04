@@ -8,7 +8,7 @@ inquirer.prompt([{
   type: 'confirm',
   name: 'gitshots',
   message: 'Do you want to use gitshots?',
-  default: true
+  default: false
 }]).then(function (answers) {
   if(answers.gitshots){
 

@@ -1,5 +1,5 @@
 [user]
-	name = lebeerman
+	name = Dan Beerman
 	email = omnidbeerman@gmail.com
 [github]
   # https://github.com/blog/180-local-github-config
@@ -47,7 +47,7 @@
   safecrlf = warn
   # prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
   #safecrlf = true
-  editor = vim
+	editor = code
   #editor = subl -w
 
 [alias]
@@ -148,6 +148,7 @@
   cob = checkout -b
   sno = show --name-only
   logsimple = log --graph --abbrev-commit --pretty=oneline --all --decorate
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [apply]
   whitespace = nowarn
 
@@ -160,6 +161,7 @@
 
 [diff]
   tool = vimdiff
+	algorithm = histogram
 
 [init]
   templatedir = ~/.dotfiles/.git_template
@@ -180,7 +182,7 @@
 
 [credential]
     # cache creds (git help credential-cache)
-  helper = cache
+	helper = osxkeychain
 
 [filter "tabspace"]
   clean = expand -t 4
