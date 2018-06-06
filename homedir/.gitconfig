@@ -47,7 +47,7 @@
   safecrlf = warn
   # prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
   #safecrlf = true
-	editor = code
+	editor = code --wait
   #editor = subl -w
 
 [alias]
@@ -156,12 +156,18 @@
   #Enable the recording of resolved conflicts, so that identical hunks can be resolved automatically later on
   enabled = 1
 
-[difftool]
-  prompt = false
+# [difftool]
+#   prompt = false
 
+# [diff]
+#   tool = vimdiff
+# 	algorithm = histogram
+# https://stackoverflow.com/questions/30024353/how-to-use-visual-studio-code-as-default-editor-for-git#36644561
 [diff]
-  tool = vimdiff
-	algorithm = histogram
+    tool = default-difftool
+
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 
 [init]
   templatedir = ~/.dotfiles/.git_template
