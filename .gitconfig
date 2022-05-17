@@ -1,0 +1,9 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+	email = 5659334+lebeerman@users.noreply.github.com
+	name = Dan Beerman
+[push]
+	default = current
+[credential]
+	helper = osxkeychain

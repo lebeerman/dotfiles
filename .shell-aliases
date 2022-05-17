@@ -1,0 +1,14 @@
+# ALIASES
+alias e-zsh="code ~/.zshrc"
+alias e-omz="code ~/.oh-my-zsh"
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
+
+# K8s
+
+# alias kwatch="watch kubectl get pods -l app=$1"
+kwatch() {
+ echo Opening watch for app_name:$1
+ watch kubectl get pods -l app=$1
+}
+

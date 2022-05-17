@@ -1,0 +1,6 @@
+kubectl 1.15.3
+minikube 0.33.1
+argo 2.9.4
+saml2aws 2.21.0
+vault 1.5.5
+packer 1.7.4
