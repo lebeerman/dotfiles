@@ -1,0 +1,115 @@
+#!/bin/bash
+
+# first stab at making this happen, lets see how it goes!
+###
+# yadm
+###
+curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x /usr/local/bin/yadm
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+  fi
+
+  if [ -d "$HOME/.iterm2" ]; then
+    echo "Setting iTerm preference folder"
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
+  fi
+
+  # TODO Wrap this in a checker
+  # browsers
+  brew install --cask google-chrome
+  brew install --cask firefox
+  # brave?
+  # brew install --cask google-chrome-canary
+  # brew install --cask firefox-developer-edition
+
+  # Devops
+  brew install terraform
+  brew install vault
+  brew install packer
+  # brew install --cask vagrant
+  # brew install nomad
+  # brew install consul
+
+  # Virtualization
+  brew install --cask virtualbox
+  brew install --cask docker
+  # brew install --cask vmware-fusion
+  # brew install --cask vagrant-manager
+
+  # IDEs
+  brew install --cask visual-studio-code
+  brew install --cask intellij-idea
+  # brew install --cask visual-studio
+  # brew install --cask android-studio
+
+  # VS Code Extensions! TODO... or not use VS Code Sync now.
+  # cat ./vscode-extensions.txt | xargs -L1 code — install-extension
+
+  # AWS Tools
+  brew tap aws/tap
+  brew install aws-sam-cli
+
+  # CLI Tools
+  brew install --cask postman
+  brew install --cask httpie
+  brew install --cask nvm
+  brew install --cask tree
+  brew install --cask ctop
+  brew install --cask jq
+  mkdir ~/.nvm
+  brew install bash-completion
+  # TODO Add to .bash_profile... maybe this is done
+
+  # Language Support
+  curl -s "https://get.sdkman.io" | bash
+  brew install --cask go
+
+  # DB Tools
+  brew install --cask sequel-pro
+
+  # Productivity
+  brew install --cask alfred
+  brew install --cask slack
+  brew install --cask discord
+  brew install --cask rectangle
+  brew install --cask dropbox
+
+fi
+
+###
+# asdf
+###
+if [[ -d ~/.asdf ]]; then
+  source ~/.asdf/asdf.sh
+  asdf update
+else
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+  source ~/.asdf/asdf.sh
+fi
+
+for plugin in $(awk '{print $1}' ~/.tool-versions); do
+   asdf plugin add ${plugin}
+done
+
+# asdf util global upgrade
+
+###
+# Cleanup
+###
+brew cleanup
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:lebeerman/dotfiles.git"
+
+which zsh && exec zsh
