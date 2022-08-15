@@ -17,10 +17,6 @@ ln -s ~/Dropbox/.ssh ~/.ssh
 
 ```
 
-```{bash}
-
-```
-
 
 ## Todo List
 

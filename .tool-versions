@@ -4,3 +4,5 @@ argo 2.9.4
 saml2aws 2.21.0
 vault 1.5.5
 packer 1.7.4
+sopstool 1.0.0
+nodejs 17.9.1

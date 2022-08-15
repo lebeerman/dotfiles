@@ -1,6 +1,6 @@
 # ALIASES
-alias e-zsh="code ~/.zshrc"
-alias e-omz="code ~/.oh-my-zsh"
+alias edit-zsh="code ~/.zshrc"
+alias edit-omz="code ~/.oh-my-zsh"
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
 
