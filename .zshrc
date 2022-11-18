@@ -114,8 +114,6 @@ bindkey "\e\e[C" forward-word
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-
 export AWS_SESSION_TTL=12h
 export AWS_FEDERATION_TOKEN_TTL=12h
 export AWS_ASSUME_ROLE_TTL=1h
@@ -128,6 +126,9 @@ export AWS_MAX_ATTEMPTS=3000
 
 # export PATH="/Users/danbeerman/.gem/ruby/2.3.0/bin:$PATH"
 export GOPATH=~/go
+
+export KUBECONFIG=~/.kube/apollo:~/.kube/c10:~/.kube/config
+# ~/.kube/barrel
 
 complete -o nospace -C /usr/local/Cellar/tfenv/1.0.2/versions/0.11.10/terraform terraform
 
@@ -146,12 +147,13 @@ complete -o nospace -C /usr/local/Cellar/tfenv/1.0.2/versions/0.11.10/terraform 
 # export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 # # For pkg-config to find openssl@3 you may need to set:
 # export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+export PATH=/opt/homebrew/bin:$PATH
+
 PATH="/usr/local/opt/openssl@1.1/bin:$PATH" \
 LDFLAGS="-L$(brew --prefix)/opt/openssl@1.1/lib" \
 CPPFLAGS="-I$(brew --prefix)/opt/openssl@1.1/include" \
 PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl@1.1/lib/pkgconfig" \
 # Homebrew on the M1, where things install to /opt/homebrew
-export PATH=/opt/homebrew/bin:$PATH
 
 # Initialize pyenv + rbenv on shell start
 export PYENV_ROOT="$HOME/.pyenv"
@@ -179,7 +181,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 autoload -U +X bashcompinit && bashcompinit
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
-
+# kubectl
+source <(kubectl completion zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme

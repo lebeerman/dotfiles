@@ -5,4 +5,7 @@ saml2aws 2.21.0
 vault 1.5.5
 packer 1.7.4
 sopstool 1.0.0
-nodejs 17.9.1
+nodejs 14.20.0
+awscli 2.7.18
+sops 3.7.3
+golang 1.16
